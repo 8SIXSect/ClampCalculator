@@ -6,7 +6,10 @@ local function getValidNum(prompt)
         userInput = vim.fn.input(prompt)
 
         -- Allow the user to quit early
-        if userInput == "q" then return -1 end
+        if userInput == "q" then
+            vim.cmd("normal! :clear")
+            return -1
+        end
 
         local inputAsNum = tonumber(userInput)
 
