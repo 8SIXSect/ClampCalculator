@@ -4,6 +4,9 @@ local function getValidNum(prompt)
 
     while outputNum <= -1 do
         userInput = vim.fn.input(prompt)
+        print("in " .. userInput .. type(userInput))
+        if userInput == "q" then return -1 end
+
         local inputAsNum = tonumber(userInput)
 
         if inputAsNum ~= nil then
@@ -16,10 +19,16 @@ end
 
 local function generateClamp()
     local minValue = getValidNum("Min Value (REM): ")
+    if minValue == -1 then return end
+
     local maxValue = getValidNum("Max Value (REM): ")
+    if maxValue == -1 then return end
 
     local minViewportWidth = getValidNum("Min Viewport Width (PX): ")
+    if minViewportWidth == -1 then return end
+
     local maxViewportWidth = getValidNum("Max Viewport Width (PX): ")
+    if maxViewportWidth == -1 then return end
 
     -- Convert from PX to REM; probably could make this configurable
     minViewportWidth = minViewportWidth / 16
