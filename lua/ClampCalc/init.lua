@@ -4,7 +4,8 @@ local function getValidNum(prompt)
 
     while outputNum <= -1 do
         userInput = vim.fn.input(prompt)
-        print("in " .. userInput .. type(userInput))
+
+        -- Allow the user to quit early
         if userInput == "q" then return -1 end
 
         local inputAsNum = tonumber(userInput)
