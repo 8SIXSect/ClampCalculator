@@ -14,7 +14,7 @@ local function getValidNum(prompt)
     return outputNum
 end
 
-vim.api.nvim_create_user_command("GenerateClamp", function()
+local function generateClamp()
     local minValue = getValidNum("Min Value (REM): ")
     local maxValue = getValidNum("Max Value (REM): ")
 
@@ -45,5 +45,10 @@ vim.api.nvim_create_user_command("GenerateClamp", function()
     )
 
     vim.api.nvim_put({ clamp_string_output }, "c", true, true)
-end, {})
+end
+
+
+return {
+    generateClamp = generateClamp
+}
 
