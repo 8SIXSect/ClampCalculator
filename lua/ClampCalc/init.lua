@@ -22,10 +22,10 @@ local function getValidNum(prompt)
 end
 
 local function generateClamp()
-    local minValue = getValidNum("Min Value (REM): ")
+    local minValue = getValidNum("Min Value (PX): ")
     if minValue == -1 then return end
 
-    local maxValue = getValidNum("Max Value (REM): ")
+    local maxValue = getValidNum("Max Value (PX): ")
     if maxValue == -1 then return end
 
     local minViewportWidth = getValidNum("Min Viewport Width (PX): ")
@@ -35,6 +35,8 @@ local function generateClamp()
     if maxViewportWidth == -1 then return end
 
     -- Convert from PX to REM; probably could make this configurable
+    minValue = minValue / 16
+    maxValue = maxValue / 16
     minViewportWidth = minViewportWidth / 16
     maxViewportWidth = maxViewportWidth / 16
 
